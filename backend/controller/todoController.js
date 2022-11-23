@@ -51,7 +51,7 @@ exports.getTodos = async (req, res) => {
 
 exports.deleteTitle = async (req, res) => {
     try {
-        const { id } = req.headers
+        const { id } = req.params
 
         const titleExists = await Todo.findByIdAndDelete(id)
         if(!titleExists) {
@@ -72,7 +72,7 @@ exports.deleteTitle = async (req, res) => {
 
 exports.editTitle = async (req, res) => {
     try {
-        const { id } = req.headers
+        const { id } = req.params
         const { title } = req.body
 
         const titleExists = await Todo.findOneAndUpdate(id, { title })
@@ -95,19 +95,53 @@ exports.editTitle = async (req, res) => {
 exports.addTask = async (req, res) => {
     try {
         const { task } = req.body
-        const { id } = req.headers
+        const { id } = req.params
 
-        const tasks = await Todo.findByIdAndUpdate(id, { task })
+        const todo = await Todo.findById(id)
 
-        if(!tasks) {
+        if(!todo) {
             throw new Error("Todo not exists")
         }
+        console.log(todo.tasks)
+        todo.tasks.push(task)
+        await todo.save()
 
         res.status(200).json({
             success: true,
             message: "task added successfully"
         })
 
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+exports.deleteTask = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { task } = req.headers
+
+        const todo = await Todo.findById(id)
+
+        if(!todo) {
+            throw new Error("Task not exists")
+        }
+
+        for(let index = 0; index < task.length; ++index) {
+            if(!isNaN(parseInt(task[index]))) {
+                todo.tasks.splice(parseInt(task[index]), 1)
+            } 
+        }
+
+        todo.save()
+
+        res.status(200).json({
+            success: true,
+            message: "Updated successfully"
+        })
     } catch (error) {
         res.status(400).json({
             success: false,

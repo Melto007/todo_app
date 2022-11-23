@@ -9,8 +9,7 @@ const todoSchema = new mongoose.Schema({
         default: Date.now
     },
     tasks: {
-        type: [String],
-        default: Date.now
+        type: [String]
     }
 })
 

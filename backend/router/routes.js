@@ -1,13 +1,15 @@
 const express = require('express')
 const router = express.Router()
-const { homepage, addTitle, getTodos, addTask, editTitle, deleteTitle } = require('../controller/todoController')
+const { homepage, addTitle, getTodos, addTask, editTitle, deleteTitle, deleteTask } = require('../controller/todoController')
 
 router.get('/', homepage)
 router.post('/title', addTitle)
 router.get('/todos', getTodos)
-router.post('/task', addTask)
+router.put('/task/:id', addTask)
 
-router.put('/edit', editTitle)
-router.delete('/delete', deleteTitle)
+router.put('/edit/:id', editTitle)
+router.delete('/delete/:id', deleteTitle)
+
+router.delete('/deletetask/:id', deleteTask)
 
 module.exports = router
