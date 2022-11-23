@@ -49,6 +49,49 @@ exports.getTodos = async (req, res) => {
     }
 }
 
+exports.deleteTitle = async (req, res) => {
+    try {
+        const { id } = req.headers
+
+        const titleExists = await Todo.findByIdAndDelete(id)
+        if(!titleExists) {
+            throw new Error('Todo is not exists')
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Todo deleted successfully'
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+exports.editTitle = async (req, res) => {
+    try {
+        const { id } = req.headers
+        const { title } = req.body
+
+        const titleExists = await Todo.findOneAndUpdate(id, { title })
+        if(!titleExists) {
+            throw new Error('Todo is not exists')
+        }
+
+        res.status(200).json({
+            success: true,
+            message: 'Todo updated successfully'
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
 exports.addTask = async (req, res) => {
     try {
         const { task } = req.body
