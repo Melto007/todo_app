@@ -102,7 +102,7 @@ exports.addTask = async (req, res) => {
         if(!todo) {
             throw new Error("Todo not exists")
         }
-        console.log(todo.tasks)
+    
         todo.tasks.push(task)
         await todo.save()
 
@@ -119,23 +119,44 @@ exports.addTask = async (req, res) => {
     }
 }
 
-exports.deleteTask = async (req, res) => {
+exports.editTask = async (req, res) => {
     try {
         const { id } = req.params
-        const { task } = req.headers
+        const ids = req.headers.id
+        const { task } = req.body
 
         const todo = await Todo.findById(id)
 
         if(!todo) {
+            throw new Error("Todo not exists")
+        }
+
+        todo.tasks.splice(ids, 1, task)
+        todo.save()
+
+        res.status(200).json({
+            success: true,
+            message: "Updated successfully"
+        })
+    } catch (error) {
+        res.status(400).json({
+            success: false,
+            message: error.message
+        })
+    }
+}
+
+exports.deleteTask = async (req, res) => {
+    try {
+        const { id } = req.params
+        const { task } = req.headers
+        const todo = await Todo.findById(id)
+        
+        if(!todo) {
             throw new Error("Task not exists")
         }
 
-        for(let index = 0; index < task.length; ++index) {
-            if(!isNaN(parseInt(task[index]))) {
-                todo.tasks.splice(parseInt(task[index]), 1)
-            } 
-        }
-
+        todo.tasks.splice(task, 1)
         todo.save()
 
         res.status(200).json({
