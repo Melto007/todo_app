@@ -1,0 +1,21 @@
+.sideBar {
+    transform: translateX(-100%);
+    transition: all 0.5s;
+}
+
+.active {
+    transform: translateX(0);
+}
+
+.slidebar-todo {
+    width: 100%;
+    height: 52vh;
+    overflow-x: hidden;
+    overflow-y: auto;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.slidebar-todo::-webkit-scrollbar { 
+    display: none;  
+}
