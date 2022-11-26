@@ -19,6 +19,7 @@ module.exports = {
       'lg': '1024px',
       'lg-screen': '1040px',
       'xl': '1280px',
+      'xl-screen2': '1440px',
       '2xl': '1536px',
     }
   },
