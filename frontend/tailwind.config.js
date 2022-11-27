@@ -5,17 +5,19 @@ module.exports = {
   ],
   theme: {
     colors: {
-      'blue': '#1fb6ff',
+      'blue': '#03203C',
       'black': '#000',
       'white': '#fff',
       'purple': '#7e5bef',
-      'pink': '#ff49db',
+      'pink': '#E03B8B',
+      'dark-blue': '#383CC1',
     },
     screens: {
       'sm-screen1': '420px',
       'sm-screen2': '550px',
       'sm': '640px',
       'md': '768px',
+      'md-screem2': '820px',
       'lg': '1024px',
       'lg-screen': '1040px',
       'xl': '1280px',

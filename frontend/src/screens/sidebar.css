@@ -1,11 +1,11 @@
-/* .sideBar {
-    transform: translateX(-100%);
-    transition: all 0.5s;
-} */
-
-.active {
+.sideBar {
     transform: translateX(0);
+    transition: all 0.5s;
 }
+
+/* .active {
+    transform: translateX(0);
+} */
 
 .slidebar-todo {
     overflow-x: hidden;
@@ -16,4 +16,10 @@
 
 .slidebar-todo::-webkit-scrollbar { 
     display: none;  
+}
+
+@media (min-width: 820px) {
+    .sideBar {
+        transform: translateX(0);
+    }
 }

@@ -1,18 +1,18 @@
 import React from 'react'
 import SideBar from './SideBar'
 import Footer from "./Footer";
-// import MainContent from "./MainContent"
+import MainContent from "./MainContent"
 
 const MainPage = () => {
   return (
     <div className="w-[100%] h-screen bg-gradient-to-r from-purple to-pink">
         <div className='sm:flex'>
-            <div className='z-10 sm:px-[1rem]'>
+            <div className='z-10 md-screem2:px-[0.4rem]'>
                 <SideBar />
             </div>
 
-            <div className='sm:py-[1.4rem] sm:px-[1rem]'>
-                Main Content
+            <div className='w-[100%] py-[0.4rem] px-[0.2rem] md-screem2:py-[1rem] md-screem2:px-[1rem]'>
+                <MainContent />
             </div>
         </div>
 
