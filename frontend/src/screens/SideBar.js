@@ -7,7 +7,7 @@ import './js/sidebar'
 const SlideBar = () => {
   return (
     <>
-        <div className='sideBar w-[250px] h-[590px] px-[0.2rem] bg-black opacity-75 rounded-tr-lg rounded-br-lg absolute left-0 top-[1rem] md-screem2:relative  sm:h-[600px] sm:rounded-lg md-screem2:h-[780px] xl:w-[260px] xl:w-[300px] 2xl:h-[640px]'>
+        <div className='sideBar w-[250px] h-[590px] px-[0.2rem] bg-black opacity-75 rounded-tr-lg rounded-br-lg absolute left-0 top-[1rem] md-screem2:relative  sm:h-[600px] sm:rounded-lg md-screem2:h-[650px] xl:w-[260px] xl:w-[300px] 2xl:h-[640px]'>
             <div className='text-right px-[0.5rem] py-[0.3rem] md-screem2:hidden text-white'>
                 <Icons className="fa-solid fa-xmark" />
             </div>
@@ -24,7 +24,7 @@ const SlideBar = () => {
                 </div>
 
                 <div> 
-                    <div className='slidebar-todo h-[410px] sm:h-[425px] md-screem2:h-[630px] xl:h-[615px] 2xl:h-[470px]'>
+                    <div className='slidebar-todo h-[410px] sm:h-[425px] md-screem2:h-[490px] 2xl:h-[470px]'>
                         <div className='w-[100%] h-[40px] bg-blue opacity-100 text-white flex justify-between items-center rounded-lg my-[0.3rem]'>
                             <p className='px-[0.4rem] text-[0.7rem] text-bold xl:text-[1rem]'>Todo 1</p>
                             <button><Icons className="fa-solid fa-chevron-right px-[0.4rem] text-[0.7rem] text-bold" /></button>

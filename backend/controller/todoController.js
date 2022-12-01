@@ -4,7 +4,10 @@ exports.homepage = (req, res) => {
     res.send('<h1>TODO APP...!</h1>')
 }
 
-exports.addTitle = async (req, res) => {
+/* Title add, get, delete, update operations start */
+
+/* Add Todo */
+exports.createTodo = async (req, res) => {
     try {
         const { title } = req.body
 
@@ -28,8 +31,10 @@ exports.addTitle = async (req, res) => {
         })
     }
 }
+/* End of add Todo */
 
-exports.getTodos = async (req, res) => {
+/* Start of Get todo */
+exports.getTodo = async (req, res) => {
     try {
         const todo = await Todo.find()
 
@@ -41,6 +46,7 @@ exports.getTodos = async (req, res) => {
             success: true,
             todo
         })
+
     } catch (error) {
         res.status(400).json({
             success: false,
@@ -48,8 +54,10 @@ exports.getTodos = async (req, res) => {
         })
     }
 }
+/* End of Get todo */
 
-exports.deleteTitle = async (req, res) => {
+/* Start of delete todo */
+exports.deleteTodo = async (req, res) => {
     try {
         const { id } = req.params
 
@@ -69,8 +77,10 @@ exports.deleteTitle = async (req, res) => {
         })
     }
 }
+/* End of delete todo */
 
-exports.editTitle = async (req, res) => {
+/* Start of update todo */
+exports.updateTodo = async (req, res) => {
     try {
         const { id } = req.params
         const { title } = req.body
@@ -91,8 +101,11 @@ exports.editTitle = async (req, res) => {
         })
     }
 }
+/* End of update todo */
+/* Title add, get, delete, update operations end */
 
-exports.addTask = async (req, res) => {
+/* Start of create Task */
+exports.createTask = async (req, res) => {
     try {
         const { task } = req.body
         const { id } = req.params
@@ -102,7 +115,7 @@ exports.addTask = async (req, res) => {
         if(!todo) {
             throw new Error("Todo not exists")
         }
-    
+
         todo.tasks.push(task)
         await todo.save()
 
@@ -118,8 +131,10 @@ exports.addTask = async (req, res) => {
         })
     }
 }
+/* End of Add Task */
 
-exports.editTask = async (req, res) => {
+/** Update task */
+exports.updateTask = async (req, res) => {
     try {
         const { id } = req.params
         const ids = req.headers.id
@@ -145,7 +160,9 @@ exports.editTask = async (req, res) => {
         })
     }
 }
+/** End of Update task */
 
+/** Delete task */
 exports.deleteTask = async (req, res) => {
     try {
         const { id } = req.params
@@ -170,3 +187,4 @@ exports.deleteTask = async (req, res) => {
         })
     }
 }
+/** End of Update task */
